@@ -4,11 +4,11 @@
 
 ### Request Share
 
-#### Parameters
+###### Parameters
 
 ### Accept Share
 
-#### Parameters
+###### Parameters
 
 ## File Gateway
 
@@ -38,13 +38,14 @@ description: Grants access to a file hash.
 
 ###### Parameters
 
-- `user`: string - The account_id of the user that will have a NFT contract disabled for them.
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall have access into.
+- `user`: string - The account_id of the user that shall get authorized to access the file.
 
 ###### Returns
 
-- `account_id`: string - The owner's account_id.
+Has no returns.
 
-### Events
+###### Events
 
 Access Created:
 ```json
@@ -63,6 +64,22 @@ Access Created:
 }
 ```
 
+##### Revoke Access
+
+method: `revoke_access`  
+description: Revokes access to a file hash.
+
+###### Parameters
+
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall lose it's access into.
+- `user`: string - The account_id of the user that shall be not authorized to access the file.
+
+###### Returns
+
+Has no returns.
+
+###### Events
+
 Access Deleted:
 ```json
 {
@@ -79,6 +96,8 @@ Access Deleted:
   }
 }
 ```
+
+### Events
 
 Share Requested:
 ```json
