@@ -35,7 +35,7 @@ method: `add_storage`
 description: Add a new file storage manager, such as Google Drive.
 
 ###### Parameters
-- `name`: string - Unique name that represents that file storage manager. Eg. "Google Drive".
+- `name_hash`: string - Unique name that represents that file storage manager. Eg. "Google Drive" (should be hashed, can be salted).
 
 ###### Returns
 Has no returns.
@@ -49,7 +49,7 @@ Has no returns.
     "event": "new_storage",
     "data": [
       {
-        "storage_manager": "Google Drive",
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
       }
     ]
   }
@@ -61,7 +61,7 @@ method: `remove_storage`
 description: Remove a file storage manager, such as Google Drive.
 
 ###### Parameters
-- `name`: string - Unique name that represents that file storage manager. Eg. "Google Drive".
+- `name_hash`: string - Unique name that represents that file storage manager. Eg. "Google Drive" (should be hashed, can be salted).
 
 ###### Returns
 - `removed`: boolean - whether the removed storage manager was just removed.
@@ -75,7 +75,7 @@ description: Remove a file storage manager, such as Google Drive.
     "event": "removed_storage",
     "data": [
       {
-        "storage_manager": "Google Drive",
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
       }
     ]
   }
@@ -91,7 +91,7 @@ description: Get a list of registered storage managers.
 - `limit`: optional number - 16-bits number to limit how many storage manager to show.
 
 ###### Returns
-- `storages`: `string[]` - list of file storage managers' names.
+- `storages`: `string[]` - list of file storage managers' name_hash.
 
 #### File Management
 
@@ -100,9 +100,10 @@ method: `add_file`
 description: Adds a new file, which is related to some storage, to be owned by some user.
 
 ###### Parameters
-- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall own.
-- `storage_manager`: string - name of the storage manager.
 - `user`: string - The account_id of the user that shall own the file.
+- `storage_manager`: string - The name hash of the storage manager.
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall own.
+- `uri`: string - The URI or reference hash for the file location within the `storage_manager`.
 
 ###### Returns
 - `added`: bool - whether the file was successfully added.
@@ -117,8 +118,9 @@ description: Adds a new file, which is related to some storage, to be owned by s
     "data": [
       {
         "owner_id": "my-account.near",
-        "storage_manager": "Google Drive",
-        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
+        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "uri": "bfd426d349a68b483b2cc1f4d397a9deb68f5efb681b37d88777a5a707878d2d"
       }
     ]
   }
@@ -130,9 +132,10 @@ method: `remove_file`
 description: Removes a file, which is related to some storage, from some user.
 
 ###### Parameters
-- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall lose ownership.
-- `storage_manager`: string - name of the storage manager.
 - `user`: string - The account_id of the user that shall lose ownership of the file.
+- `storage_manager`: string - name of the storage manager.
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall lose ownership.
+- `uri`: string - The URI or reference hash for the file location within the `storage_manager`.
 
 ###### Returns
 - `removed`: bool - whether the file was successfully removed.
@@ -147,8 +150,9 @@ description: Removes a file, which is related to some storage, from some user.
     "data": [
       {
         "owner_id": "my-account.near",
-        "storage_manager": "Google Drive",
-        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
+        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "uri": "bfd426d349a68b483b2cc1f4d397a9deb68f5efb681b37d88777a5a707878d2d"
       }
     ]
   }
@@ -162,9 +166,10 @@ method: `grant_access`
 description: Grants access to a file hash.
 
 ###### Parameters
-- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall have access into.
-- `storage_manager`: string - name of the storage manager.
 - `user`: string - The account_id of the user that shall get authorized to access the file.
+- `storage_manager`: string - name of the storage manager.
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall have access into.
+- `uri`: string - The URI or reference hash for the file location within the `storage_manager`.
 
 ###### Returns
 Has no returns.
@@ -179,8 +184,9 @@ Has no returns.
     "data": [
       {
         "owner_id": "my-account.near",
-        "storage_manager": "Google Drive",
-        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
+        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "uri": "bfd426d349a68b483b2cc1f4d397a9deb68f5efb681b37d88777a5a707878d2d"
       }
     ]
   }
@@ -192,9 +198,10 @@ method: `revoke_access`
 description: Revokes access to a file hash.
 
 ###### Parameters
-- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall lose it's access into.
-- `storage_manager`: string - name of the storage manager.
 - `user`: string - The account_id of the user that shall be not authorized to access the file.
+- `storage_manager`: string - name of the storage manager.
+- `filehash`: string - The hexadecimal representation of the hash/id of the file that the `user` shall lose it's access into.
+- `uri`: string - The URI or reference hash for the file location within the `storage_manager`.
 
 ###### Returns
 Has no returns.
@@ -209,8 +216,9 @@ Has no returns.
     "data": [
       {
         "owner_id": "my-account.near",
-        "storage_manager": "Google Drive",
-        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
+        "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+        "uri": "bfd426d349a68b483b2cc1f4d397a9deb68f5efb681b37d88777a5a707878d2d"
       }
     ]
   }
@@ -233,7 +241,7 @@ Share Requested:
         "owner_id": "my-account.near",
         "receiver_id": "my-account.near",
         "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
-        "storage_manager": "Google Drive",
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
       }
     ]
   }
@@ -252,7 +260,7 @@ Share Accepted:
         "owner_id": "my-account.near",
         "receiver_id": "my-account.near",
         "file_hash": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
-        "storage_manager": "Google Drive",
+        "storage_manager": "3c747963faee04a635854300c3c4bdf69273078d345429d48db5d6d9db92fb3c",
       }
     ]
   }
