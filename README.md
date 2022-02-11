@@ -349,3 +349,148 @@ Share Accepted:
   }
 }
 ```
+
+
+### Message samples
+
+- Create Wallet
+
+Message In:
+
+```json
+{
+  "id": "4567",
+  "operation": "execute",
+  "contract": "testnet",
+  "method": "create_account",
+  "args": {
+    "new_account_id": "my-account5046.testnet",
+    "new_public_key": "ed25519:D5d84XpgHtTUHwg1hbvT3Ljy6LpeLnJhU34scBC1TNKp"
+  },
+  "sender": "my-account5046.testnet",
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": "1",
+    "user_id": "my-account5046.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "4567",
+  "operation": "execute_out",
+  "success": true,
+  "message": "contract call successful",
+  "explorerUrl": "https://explorer.testnet.near.org/transactions/4ETZyEE2rHqPkNAez9PRvTYZVUKPvMUULJjGkibKHiFe",
+  "args": true
+}
+```
+
+- Create NFT Series
+
+Message In:
+
+```json
+{
+  "id": "1234",
+  "operation": "execute",
+  "contract": "nft.naps.testnet",
+  "method": "nft_series_create",
+  "sender": "my-account3256.testnet",
+  "args": {
+    "name": "Title of my NFT",
+    "capacity": "20",
+    "creator": "vvs111.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": "2",
+    "user_id": "my-account3256.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "1234",
+  "operation": "execute_out",
+  "success": true,
+  "message": "contract call successful",
+  "explorerUrl": "https://explorer.testnet.near.org/transactions/CEPvP3Z4q9HJkssqrqKwRNG5djF6iFSQGBYy18yAwU5k",
+  "args": "37"
+}
+```
+
+- Transfer NFT
+
+Message In:
+
+```json
+{
+  "id": "7890",
+  "operation": "execute",
+  "contract": "nft.naps.testnet",
+  "method": "nft_series_mint",
+  "sender": "my-account8246.testnet",
+  "deposit": "0.01",
+  "args": {
+    "series_id": "37",
+    "token_owner_id": "my-account.testnet",
+    "token_metadata": {
+      "title": null,
+      "description": null,
+      "media": "https://ipfs.io/ipfs/bafybeicvjdjdxhu6oglore3dw26pclogws2adk7gtmsllje6siinqq4uzy",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": "https://ipfs.io/ipfs/bafybeigo6bjoq6t5dl4fqgvwosplvbkbu5ri6wo3cmkxmypi4sj2j2ae54",
+      "reference_hash": null
+    }
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": "3",
+    "user_id": "my-account8246.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "7890",
+  "operation": "execute_out",
+  "success": true,
+  "message": "contract call successful",
+  "explorerUrl": "https://explorer.testnet.near.org/transactions/DbUUD55qcD1ypBKCjTYSMV2LaSznxdrfABqx6Yg9xq7m",
+  "args": {
+    "token_id": "Title of my NFT:37:0",
+    "owner_id": "my-account.testnet",
+    "metadata": {
+      "title": null,
+      "description": null,
+      "media": "https://ipfs.io/ipfs/bafybeicvjdjdxhu6oglore3dw26pclogws2adk7gtmsllje6siinqq4uzy",
+      "media_hash": null,
+      "copies": null,
+      "issued_at": null,
+      "expires_at": null,
+      "starts_at": null,
+      "updated_at": null,
+      "extra": null,
+      "reference": "https://ipfs.io/ipfs/bafybeigo6bjoq6t5dl4fqgvwosplvbkbu5ri6wo3cmkxmypi4sj2j2ae54",
+      "reference_hash": null
+    },
+    "approved_account_ids": {}
+  }
+}
+```
