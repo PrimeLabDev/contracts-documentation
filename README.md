@@ -350,8 +350,7 @@ Share Accepted:
 }
 ```
 
-
-### Message samples
+# Message samples
 
 - Create Wallet
 
@@ -491,6 +490,88 @@ Message Out:
       "reference_hash": null
     },
     "approved_account_ids": {}
+  }
+}
+```
+
+#### Send Near Tokens
+
+- Send Near Tokens
+
+description: The executor will transfer 1 NEAR from user _my-account.testnet_ into the user _my-friend.testnet._
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "send_near_send",
+  "args": {
+    "sender_id": "my-account.testnet",
+    "receiver_id": "my-friend.testnet",
+    "amount": "1000000000000000000000000"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "send_near_send_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": {
+    "got_sent": true
+  }
+}
+```
+
+#### Send Nft Tokens
+
+- Send Nft Tokens
+
+description: The executor will ask the SendNft to transfer _some-token-123_ token from user _my-account.testnet_ into
+the user _my-friend.testnet,_ for _the.nft.testnet_ nft contract.
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "send_nft_send",
+  "args": {
+    "nft_contract": "the.nft.testnet",
+    "token_id": "some-token-123",
+    "sender_id": "my-account.testnet",
+    "receiver_id": "my-friend.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "send_nft_send_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": {
+    "got_sent": true
   }
 }
 ```
