@@ -505,7 +505,9 @@ Message In:
 ```json
 {
   "id": "987654",
-  "operation": "send_near_send",
+  "operation": "execute",
+  "contract": "send-near.naps.testnet",
+  "method": "send_logged",
   "args": {
     "sender_id": "my-account.testnet",
     "receiver_id": "my-friend.testnet",
@@ -524,7 +526,7 @@ Message Out:
 ```json
 {
   "id": "987654",
-  "operation": "send_near_send_out",
+  "operation": "execute_out",
   "success": true,
   "app_id": "my nice app",
   "explorerUrl": "https://explorer.near.org/wwww",
@@ -546,7 +548,9 @@ Message In:
 ```json
 {
   "id": "987654",
-  "operation": "send_nft_send",
+  "operation": "execute",
+  "contract": "send-nft.naps.testnet",
+  "method": "send_logged",
   "args": {
     "nft_contract": "the.nft.testnet",
     "token_id": "some-token-123",
@@ -566,7 +570,7 @@ Message Out:
 ```json
 {
   "id": "987654",
-  "operation": "send_nft_send_out",
+  "operation": "execute_out",
   "success": true,
   "app_id": "my nice app",
   "explorerUrl": "https://explorer.near.org/wwww",
