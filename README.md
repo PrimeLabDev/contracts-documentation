@@ -352,7 +352,7 @@ Share Accepted:
 
 # Message samples
 
-- Create Wallet
+#### Create Wallet
 
 Message In:
 
@@ -388,7 +388,7 @@ Message Out:
 }
 ```
 
-- Create NFT Series
+#### Create NFT Series
 
 Message In:
 
@@ -425,7 +425,7 @@ Message Out:
 }
 ```
 
-- Transfer NFT
+#### Transfer NFT
 
 Message In:
 
@@ -496,8 +496,6 @@ Message Out:
 
 #### Send Near Tokens
 
-- Send Near Tokens
-
 description: The executor will transfer 1 NEAR from user _my-account.testnet_ into the user _my-friend.testnet._
 
 Message In:
@@ -538,8 +536,6 @@ Message Out:
 
 #### Send Nft Tokens
 
-- Send Nft Tokens
-
 description: The executor will ask the SendNft to transfer _some-token-123_ token from user _my-account.testnet_ into
 the user _my-friend.testnet,_ for _the.nft.testnet_ nft contract.
 
@@ -577,5 +573,146 @@ Message Out:
   "args": {
     "got_sent": true
   }
+}
+```
+
+#### Create File
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute",
+  "contract": "access.naps.testnet",
+  "method": "create_file",
+  "args": {
+    "fileHash": "jadajksdhajsd",
+    "sender_id": "my-account.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": true
+}
+```
+
+#### Delete File
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute",
+  "contract": "access.naps.testnet",
+  "method": "delete_file",
+  "args": {
+    "fileHash": "jadajksdhajsd",
+    "sender_id": "my-account.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": true
+}
+```
+
+#### Grant File Access
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute",
+  "contract": "access.naps.testnet",
+  "method": "grant_access",
+  "args": {
+    "fileHash": "jadajksdhajsd",
+    "sender_id": "my-account.testnet",
+    "receiver_id": "my-friend.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": true
+}
+```
+
+#### Revoke File Access
+
+Message In:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute",
+  "contract": "access.naps.testnet",
+  "method": "revoke_access",
+  "args": {
+    "fileHash": "jadajksdhajsd",
+    "receiver_id": "my-friend.testnet"
+  },
+  "tags": {
+    "app_id": "my nice app",
+    "action_id": 2,
+    "user_id": "my-account.testnet"
+  }
+}
+```
+
+Message Out:
+
+```json
+{
+  "id": "987654",
+  "operation": "execute_out",
+  "success": true,
+  "app_id": "my nice app",
+  "explorerUrl": "https://explorer.near.org/wwww",
+  "args": true
 }
 ```
