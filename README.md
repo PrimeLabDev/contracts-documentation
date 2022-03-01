@@ -1,3 +1,5 @@
+Note: For contracts APIs please check [nearapps-contracts](https://github.com/nearcomponents/nearapps-contracts/tree/development) (`development` branch).
+
 # file-encryption
 
 ## File Escrow
