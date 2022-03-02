@@ -515,7 +515,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
@@ -557,7 +557,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
@@ -594,7 +594,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
@@ -629,7 +629,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
@@ -665,7 +665,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
@@ -700,7 +700,7 @@ Message In:
   },
   "tags": {
     "app_id": "my nice app",
-    "action_id": 2,
+    "action_id": "2",
     "user_id": "my-account.testnet"
   }
 }
